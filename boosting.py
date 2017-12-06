@@ -2,10 +2,8 @@ import numpy as np
 import pandas as pd
 
 epsilon = 1e-7
-
-
 		
-
+'''Triads of image1, image2, label'''
 def triadBuilder(n,Z,labels) :
 	triads = []
 	for i in range(0,n - 1) :
@@ -16,6 +14,7 @@ def triadBuilder(n,Z,labels) :
 			triads.append((Z[i],Z[j],f))
 	return triads
 
+'''Adaboost learning thresholds'''
 def thresholdBoost(triads,num_cols) :
 	n = len(triads)
 	thresholds = []
@@ -52,19 +51,4 @@ def thresholdBoost(triads,num_cols) :
 		thresholds.append(Tj)
 	return thresholds
 
-# Z = pd.read_csv('z_values_full.csv', delimiter = None)
-# # labels = pd.read_csv('trial.txt',header = None)
-# Z = Z.drop(Z.columns[0], axis = 1)
-# Z = np.array(Z)
-# labels = np.array(labels)
 
-# N = Z.shape[0]
-
-# num_cols = Z.shape[1]
-
-# #Forming the triads for Algorithm 1
-# triads = triadBuilder(N,Z,labels)
-# #Calculating thresholds for each column using Algorithm 1
-# thresholds = thresholdBoost(triads,num_cols)
-
-# # print len(thresholds)
